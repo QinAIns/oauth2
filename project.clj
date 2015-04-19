@@ -1,7 +1,7 @@
 (defproject oauth2 "0.1.0-SNAPSHOT"
 
-  :description "oauth2服务器"
-  :url "https://github.com/QinAIns/oauth2.git"
+  :description "FIXME: write description"
+  :url "http://example.com/FIXME"
 
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [ring-server "0.4.0"]
@@ -11,16 +11,19 @@
                  [markdown-clj "0.9.65"]
                  [environ "1.0.0"]
                  [im.chit/cronj "1.4.3"]
-                 [compojure "1.3.2"]
+                 [compojure "1.3.3"]
                  [ring/ring-defaults "0.1.4"]
                  [ring/ring-session-timeout "0.1.0"]
                  [ring-middleware-format "0.5.0"]
                  [noir-exception "0.2.3"]
                  [bouncer "0.3.2"]
                  [prone "0.8.1"]
+                 [buddy "0.5.1"]
                  [ragtime "0.3.8"]
                  [yesql "0.5.0-rc1"]
-                 [org.postgresql/postgresql "9.3-1102-jdbc41"]]
+                 [org.postgresql/postgresql "9.3-1102-jdbc41"]
+                 [metosin/compojure-api "0.19.3"]
+                 [metosin/ring-swagger-ui "2.1.0-M2-2"]]
 
   :min-lein-version "2.0.0"
   :uberjar-name "oauth2.jar"
@@ -33,13 +36,12 @@
             [lein-environ "1.0.0"]
             [lein-ancient "0.6.5"]
             [ragtime/ragtime.lein "0.3.8"]]
-  
 
   :ring {:handler oauth2.handler/app
          :init    oauth2.handler/init
          :destroy oauth2.handler/destroy
          :uberwar-name "oauth2.war"}
-  
+
   :ragtime
   {:migrations ragtime.sql.files/migrations
    :database
@@ -47,13 +49,14 @@
 
   :profiles
   {:uberjar {:omit-source true
-             :env {:production true}   
+             :env {:production true}
              :aot :all}
    :dev {:dependencies [[ring-mock "0.1.5"]
                         [ring/ring-devel "1.3.2"]
                         [pjstadig/humane-test-output "0.7.0"]
                         ]
          :source-paths ["env/dev/clj"]
+
          :repl-options {:init-ns oauth2.repl}
          :injections [(require 'pjstadig.humane-test-output)
                       (pjstadig.humane-test-output/activate!)]

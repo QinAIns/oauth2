@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+  <div class="span12">
+    <form method="POST" action="{{servlet-context}}/login">
+      {% csrf-field %}
+      <p>
+        登陆名:
+        <input class="form-control"
+            type="text"
+            name="login_name"
+            value="{{login_name}}" />
+      </p>
+      {% if errors.login_name %}
+      <div class="alert alert-danger">{{errors.login_name|join}}</div>
+      {% endif %}
+	   <p>
+        密码:
+        <input class="form-control"
+            type="password"
+            name="password"
+            value="{{password}}" />
+      </p>
+      {% if errors.password %}
+      <div class="alert alert-danger">{{errors.password|join}}</div>
+      {% endif %}
+      <input type="submit" class="btn btn-primary" value="登陆" />
+    </form>
+  </div>
+</div>
+{% endblock %}

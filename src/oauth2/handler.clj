@@ -1,6 +1,7 @@
 (ns oauth2.handler
   (:require [compojure.core :refer [defroutes routes]]
             [oauth2.routes.home :refer [home-routes]]
+            [oauth2.routes.services :refer [service-routes]]
             [oauth2.middleware
              :refer [development-middleware production-middleware]]
             [oauth2.session :as session]
@@ -50,6 +51,7 @@
 (def app
   (-> (routes
         home-routes
+        service-routes
         base-routes)
       development-middleware
       production-middleware))

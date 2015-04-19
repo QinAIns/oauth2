@@ -1,8 +1,8 @@
 --name: create-user!
 -- creates a new user record
 INSERT INTO users
-(id, first_name, last_name, email, pass)
-VALUES (:id, :first_name, :last_name, :email, :pass)
+(id, password, login_name, nickname, email, phone, created)
+VALUES (:id, :password, :login_name, :nickname, :email, :phone, :created)
 
 --name: update-user!
 -- update an existing user record
