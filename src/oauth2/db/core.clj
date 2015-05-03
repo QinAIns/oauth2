@@ -4,7 +4,7 @@
 
 (def db-spec
   {:subprotocol "postgresql"
-   :subname "//localhost/oauth2"y
+   :subname "//localhost/oauth2"
    :user "postgres"
    :password "postgres"})
 

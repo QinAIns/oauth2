@@ -18,7 +18,7 @@
                  [noir-exception "0.2.3"]
                  [bouncer "0.3.2"]
                  [prone "0.8.1"]
-                 [buddy "0.5.1"]
+                 [buddy "0.5.3"]
                  [ragtime "0.3.8"]
                  [yesql "0.5.0-rc1"]
                  [org.postgresql/postgresql "9.3-1102-jdbc41"]

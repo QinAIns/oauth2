@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+  <div class="span12">
+    <form method="POST" action="{{servlet-context}}/profile" enctype="multipart/form-data">
+      {% csrf-field %}
+      <p>
+        头像:
+        <input class="form-control"
+            type="file"
+            name="avatar" 
+            value="{{avatar}}" />
+      </p>
+      {% if errors.avatar %}
+      <div class="alert alert-danger">{{errors.avatar|join}}</div>
+      {% endif %}
+      <input type="submit" class="btn btn-primary" value="更新" />
+    </form>
+  </div>
+</div>
+{% endblock %}
